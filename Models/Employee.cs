@@ -17,13 +17,13 @@ public class Employee
     [DataType(DataType.Date)]
     public DateTime DOB { get; set; } 
 
-    [Range(1, 3)]
-    public int Gender { get; set; }
-
     [Range(1, 100)]
     [DataType(DataType.Currency)]
     [Column(TypeName = "decimal(18, 2)")]
     public decimal Salary { get; set; }
 
     public IEnumerable<Qualification>? Qualification { get; set; }
+
+    public int GenderId {get; set; }
+    public Gender? Gender { get; set; } 
 }

@@ -11,7 +11,7 @@ using MvcEmployee.Data;
 namespace MvcEmployee.Migrations
 {
     [DbContext(typeof(MvcEmployeeContext))]
-    [Migration("20230127120953_InitialCreate")]
+    [Migration("20230127122901_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -29,7 +29,7 @@ namespace MvcEmployee.Migrations
                     b.Property<DateTime>("DOB")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Gender")
+                    b.Property<int>("GenderId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -41,6 +41,8 @@ namespace MvcEmployee.Migrations
                         .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("EmployeeId");
+
+                    b.HasIndex("GenderId");
 
                     b.ToTable("Employee");
                 });
@@ -96,6 +98,17 @@ namespace MvcEmployee.Migrations
                     b.HasKey("QualificationListId");
 
                     b.ToTable("QualificationList");
+                });
+
+            modelBuilder.Entity("MvcEmployee.Models.Employee", b =>
+                {
+                    b.HasOne("MvcEmployee.Models.Gender", "Gender")
+                        .WithMany()
+                        .HasForeignKey("GenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Gender");
                 });
 
             modelBuilder.Entity("MvcEmployee.Models.Qualification", b =>
