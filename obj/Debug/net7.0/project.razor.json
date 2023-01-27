@@ -18645,13 +18645,38 @@
   "RootNamespace": "MvcEmployee",
   "Documents": [
     {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Qualification/Details.cshtml",
+      "TargetPath": "Views\\Qualification\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Employee/Create.cshtml",
+      "TargetPath": "Views\\Employee\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Employee/Delete.cshtml",
+      "TargetPath": "Views\\Employee\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/dell/DotNet/MvcEmployee/Views/_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Employee/Details.cshtml",
+      "TargetPath": "Views\\Employee\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Employee/Edit.cshtml",
+      "TargetPath": "Views\\Employee\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18665,6 +18690,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Qualification/Index.cshtml",
+      "TargetPath": "Views\\Qualification\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Shared/_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -18675,8 +18705,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Qualification/Create.cshtml",
+      "TargetPath": "Views\\Qualification\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Qualification/Edit.cshtml",
+      "TargetPath": "Views\\Qualification\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Home/Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Qualification/Delete.cshtml",
+      "TargetPath": "Views\\Qualification\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Employee/Index.cshtml",
+      "TargetPath": "Views\\Employee\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
