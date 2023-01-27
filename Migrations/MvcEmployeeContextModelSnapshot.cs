@@ -54,54 +54,30 @@ namespace MvcEmployee.Migrations
                     b.Property<decimal>("Marks")
                         .HasColumnType("decimal(18, 2)");
 
-                    b.Property<int>("QualificationListId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("QualificationId");
 
                     b.HasIndex("EmployeeId");
 
-                    b.HasIndex("QualificationListId");
-
                     b.ToTable("Qualification");
-                });
-
-            modelBuilder.Entity("MvcEmployee.Models.QualificationList", b =>
-                {
-                    b.Property<int>("QualificationListId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("QualificationListId");
-
-                    b.ToTable("QualificationList");
                 });
 
             modelBuilder.Entity("MvcEmployee.Models.Qualification", b =>
                 {
                     b.HasOne("MvcEmployee.Models.Employee", "Employee")
-                        .WithMany("Qualifications")
+                        .WithMany("Qualification")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MvcEmployee.Models.QualificationList", "QualificationList")
-                        .WithMany()
-                        .HasForeignKey("QualificationListId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Employee");
-
-                    b.Navigation("QualificationList");
                 });
 
             modelBuilder.Entity("MvcEmployee.Models.Employee", b =>
                 {
-                    b.Navigation("Qualifications");
+                    b.Navigation("Qualification");
                 });
 #pragma warning restore 612, 618
         }

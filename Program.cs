@@ -3,10 +3,13 @@ using Microsoft.Extensions.DependencyInjection;
 using MvcEmployee.Models;
 using MvcEmployee.Data;
 // using MvcEmployee.Data;
+// using MvcEmployee.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MvcEmployeeContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MvcEmployeeContext") ?? throw new InvalidOperationException("Connection string 'MvcEmployeeContext' not found.")));
+// builder.Services.AddDbContext<MvcEmployeeContext>(options =>
+//     options.UseSqlite(builder.Configuration.GetConnectionString("MvcEmployeeContext") ?? throw new InvalidOperationException("Connection string 'MvcEmployeeContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
