@@ -42,6 +42,21 @@ namespace MvcEmployee.Migrations
                     b.ToTable("Employee");
                 });
 
+            modelBuilder.Entity("MvcEmployee.Models.Gender", b =>
+                {
+                    b.Property<int>("GenderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("GenderName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("GenderId");
+
+                    b.ToTable("Gender");
+                });
+
             modelBuilder.Entity("MvcEmployee.Models.Qualification", b =>
                 {
                     b.Property<int>("QualificationId")
@@ -54,14 +69,30 @@ namespace MvcEmployee.Migrations
                     b.Property<decimal>("Marks")
                         .HasColumnType("decimal(18, 2)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("QualificationListId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("QualificationId");
 
                     b.HasIndex("EmployeeId");
 
+                    b.HasIndex("QualificationListId");
+
                     b.ToTable("Qualification");
+                });
+
+            modelBuilder.Entity("MvcEmployee.Models.QualificationList", b =>
+                {
+                    b.Property<int>("QualificationListId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("QualificationListId");
+
+                    b.ToTable("QualificationList");
                 });
 
             modelBuilder.Entity("MvcEmployee.Models.Qualification", b =>
@@ -72,7 +103,15 @@ namespace MvcEmployee.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("MvcEmployee.Models.QualificationList", "QualificationList")
+                        .WithMany()
+                        .HasForeignKey("QualificationListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Employee");
+
+                    b.Navigation("QualificationList");
                 });
 
             modelBuilder.Entity("MvcEmployee.Models.Employee", b =>

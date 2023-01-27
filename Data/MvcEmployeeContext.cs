@@ -16,6 +16,10 @@ namespace MvcEmployee.Data
 
         public DbSet<MvcEmployee.Models.Employee> Employee { get; set; } = default!;
 
+        public DbSet<MvcEmployee.Models.QualificationList> QualificationList { get; set; } = default!;
+
         public DbSet<MvcEmployee.Models.Qualification> Qualification { get; set; } = default!;
+
+        public DbSet<MvcEmployee.Models.Gender> Gender { get; set; } = default!;
     }
 }

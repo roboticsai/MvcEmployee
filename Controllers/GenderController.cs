@@ -10,87 +10,87 @@ using MvcEmployee.Models;
 
 namespace MvcEmployee.Controllers
 {
-    public class EmployeeController : Controller
+    public class GenderController : Controller
     {
         private readonly MvcEmployeeContext _context;
 
-        public EmployeeController(MvcEmployeeContext context)
+        public GenderController(MvcEmployeeContext context)
         {
             _context = context;
         }
 
-        // GET: Employee
+        // GET: Gender
         public async Task<IActionResult> Index()
         {
-              return _context.Employee != null ? 
-                          View(await _context.Employee.ToListAsync()) :
-                          Problem("Entity set 'MvcEmployeeContext.Employee'  is null.");
+              return _context.Gender != null ? 
+                          View(await _context.Gender.ToListAsync()) :
+                          Problem("Entity set 'MvcEmployeeContext.Gender'  is null.");
         }
 
-        // GET: Employee/Details/5
+        // GET: Gender/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Employee == null)
+            if (id == null || _context.Gender == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
-            if (employee == null)
+            var gender = await _context.Gender
+                .FirstOrDefaultAsync(m => m.GenderId == id);
+            if (gender == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(gender);
         }
 
-        // GET: Employee/Create
+        // GET: Gender/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Employee/Create
+        // POST: Gender/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId,Name,DOB,Gender,Salary")] Employee employee)
+        public async Task<IActionResult> Create([Bind("GenderId,GenderName")] Gender gender)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
+                _context.Add(gender);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(gender);
         }
 
-        // GET: Employee/Edit/5
+        // GET: Gender/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Employee == null)
+            if (id == null || _context.Gender == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employee.FindAsync(id);
-            if (employee == null)
+            var gender = await _context.Gender.FindAsync(id);
+            if (gender == null)
             {
                 return NotFound();
             }
-            return View(employee);
+            return View(gender);
         }
 
-        // POST: Employee/Edit/5
+        // POST: Gender/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,Name,DOB,Gender,Salary")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("GenderId,GenderName")] Gender gender)
         {
-            if (id != employee.EmployeeId)
+            if (id != gender.GenderId)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace MvcEmployee.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
+                    _context.Update(gender);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.EmployeeId))
+                    if (!GenderExists(gender.GenderId))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace MvcEmployee.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(gender);
         }
 
-        // GET: Employee/Delete/5
+        // GET: Gender/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Employee == null)
+            if (id == null || _context.Gender == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
-            if (employee == null)
+            var gender = await _context.Gender
+                .FirstOrDefaultAsync(m => m.GenderId == id);
+            if (gender == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(gender);
         }
 
-        // POST: Employee/Delete/5
+        // POST: Gender/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Employee == null)
+            if (_context.Gender == null)
             {
-                return Problem("Entity set 'MvcEmployeeContext.Employee'  is null.");
+                return Problem("Entity set 'MvcEmployeeContext.Gender'  is null.");
             }
-            var employee = await _context.Employee.FindAsync(id);
-            if (employee != null)
+            var gender = await _context.Gender.FindAsync(id);
+            if (gender != null)
             {
-                _context.Employee.Remove(employee);
+                _context.Gender.Remove(gender);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmployeeExists(int id)
+        private bool GenderExists(int id)
         {
-          return (_context.Employee?.Any(e => e.EmployeeId == id)).GetValueOrDefault();
+          return (_context.Gender?.Any(e => e.GenderId == id)).GetValueOrDefault();
         }
     }
 }

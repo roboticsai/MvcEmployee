@@ -10,87 +10,87 @@ using MvcEmployee.Models;
 
 namespace MvcEmployee.Controllers
 {
-    public class EmployeeController : Controller
+    public class QualificationListController : Controller
     {
         private readonly MvcEmployeeContext _context;
 
-        public EmployeeController(MvcEmployeeContext context)
+        public QualificationListController(MvcEmployeeContext context)
         {
             _context = context;
         }
 
-        // GET: Employee
+        // GET: QualificationList
         public async Task<IActionResult> Index()
         {
-              return _context.Employee != null ? 
-                          View(await _context.Employee.ToListAsync()) :
-                          Problem("Entity set 'MvcEmployeeContext.Employee'  is null.");
+              return _context.QualificationList != null ? 
+                          View(await _context.QualificationList.ToListAsync()) :
+                          Problem("Entity set 'MvcEmployeeContext.QualificationList'  is null.");
         }
 
-        // GET: Employee/Details/5
+        // GET: QualificationList/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Employee == null)
+            if (id == null || _context.QualificationList == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
-            if (employee == null)
+            var qualificationList = await _context.QualificationList
+                .FirstOrDefaultAsync(m => m.QualificationListId == id);
+            if (qualificationList == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(qualificationList);
         }
 
-        // GET: Employee/Create
+        // GET: QualificationList/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Employee/Create
+        // POST: QualificationList/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId,Name,DOB,Gender,Salary")] Employee employee)
+        public async Task<IActionResult> Create([Bind("QualificationListId,Name")] QualificationList qualificationList)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
+                _context.Add(qualificationList);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(qualificationList);
         }
 
-        // GET: Employee/Edit/5
+        // GET: QualificationList/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Employee == null)
+            if (id == null || _context.QualificationList == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employee.FindAsync(id);
-            if (employee == null)
+            var qualificationList = await _context.QualificationList.FindAsync(id);
+            if (qualificationList == null)
             {
                 return NotFound();
             }
-            return View(employee);
+            return View(qualificationList);
         }
 
-        // POST: Employee/Edit/5
+        // POST: QualificationList/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,Name,DOB,Gender,Salary")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("QualificationListId,Name")] QualificationList qualificationList)
         {
-            if (id != employee.EmployeeId)
+            if (id != qualificationList.QualificationListId)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace MvcEmployee.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
+                    _context.Update(qualificationList);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.EmployeeId))
+                    if (!QualificationListExists(qualificationList.QualificationListId))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace MvcEmployee.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(qualificationList);
         }
 
-        // GET: Employee/Delete/5
+        // GET: QualificationList/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Employee == null)
+            if (id == null || _context.QualificationList == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
-            if (employee == null)
+            var qualificationList = await _context.QualificationList
+                .FirstOrDefaultAsync(m => m.QualificationListId == id);
+            if (qualificationList == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(qualificationList);
         }
 
-        // POST: Employee/Delete/5
+        // POST: QualificationList/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Employee == null)
+            if (_context.QualificationList == null)
             {
-                return Problem("Entity set 'MvcEmployeeContext.Employee'  is null.");
+                return Problem("Entity set 'MvcEmployeeContext.QualificationList'  is null.");
             }
-            var employee = await _context.Employee.FindAsync(id);
-            if (employee != null)
+            var qualificationList = await _context.QualificationList.FindAsync(id);
+            if (qualificationList != null)
             {
-                _context.Employee.Remove(employee);
+                _context.QualificationList.Remove(qualificationList);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmployeeExists(int id)
+        private bool QualificationListExists(int id)
         {
-          return (_context.Employee?.Any(e => e.EmployeeId == id)).GetValueOrDefault();
+          return (_context.QualificationList?.Any(e => e.QualificationListId == id)).GetValueOrDefault();
         }
     }
 }
