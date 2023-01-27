@@ -47,3 +47,6 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<div>
+    @{Html.RenderPartial("~/Views/Shared/_QualificationList.cshtml", Model.Qualification);}
+</div>   
