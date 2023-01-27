@@ -42,11 +42,9 @@ namespace MvcEmployee.Controllers
                 return NotFound();
             }
 
-            List<Qualification> qualifications = new List<Qualification> {                 
-                    new Qualification () {  QualificationId = 1, Name = "BE", Marks = 33 },
-                    new Qualification () {  QualificationId = 1, Name = "CSE", Marks = 33 },
-            };
-            employee.Qualification = qualifications;
+            var qualifications = _context.Qualification.Include(c => c.Employee);
+
+            employee.Qualification = qualifications.ToList();
 
             return View(employee);
         }
