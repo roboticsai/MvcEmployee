@@ -44,6 +44,24 @@ namespace MvcEmployee.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "QualificationList",
+                columns: table => new
+                {
+                    QualificationId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_QualificationList", x => x.QualificationId);
+                    table.ForeignKey(
+                        name: "FK_QualificationList_Qualification_QualificationId",
+                        column: x => x.QualificationId,
+                        principalTable: "Qualification",
+                        principalColumn: "QualificationId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Qualification_EmployeeId",
                 table: "Qualification",
@@ -53,6 +71,9 @@ namespace MvcEmployee.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "QualificationList");
+
             migrationBuilder.DropTable(
                 name: "Qualification");
 

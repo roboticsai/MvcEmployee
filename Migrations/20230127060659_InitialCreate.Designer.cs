@@ -10,7 +10,7 @@ using MvcEmployee.Data;
 namespace MvcEmployee.Migrations
 {
     [DbContext(typeof(MvcEmployeeContext))]
-    [Migration("20230127052820_InitialCreate")]
+    [Migration("20230127060659_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -55,6 +55,19 @@ namespace MvcEmployee.Migrations
                     b.ToTable("Qualification");
                 });
 
+            modelBuilder.Entity("MvcEmployee.Models.QualificationList", b =>
+                {
+                    b.Property<int>("QualificationId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("QualificationId");
+
+                    b.ToTable("QualificationList");
+                });
+
             modelBuilder.Entity("MvcEmployee.Models.Qualification", b =>
                 {
                     b.HasOne("MvcEmployee.Models.Employee", "Employee")
@@ -66,9 +79,23 @@ namespace MvcEmployee.Migrations
                     b.Navigation("Employee");
                 });
 
+            modelBuilder.Entity("MvcEmployee.Models.QualificationList", b =>
+                {
+                    b.HasOne("MvcEmployee.Models.Qualification", null)
+                        .WithOne("QualificationList")
+                        .HasForeignKey("MvcEmployee.Models.QualificationList", "QualificationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("MvcEmployee.Models.Employee", b =>
                 {
                     b.Navigation("Qualifications");
+                });
+
+            modelBuilder.Entity("MvcEmployee.Models.Qualification", b =>
+                {
+                    b.Navigation("QualificationList");
                 });
 #pragma warning restore 612, 618
         }
