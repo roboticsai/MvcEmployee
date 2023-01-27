@@ -45,22 +45,28 @@ namespace MvcEmployee.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("QualificationListId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("QualificationId");
 
                     b.HasIndex("EmployeeId");
+
+                    b.HasIndex("QualificationListId");
 
                     b.ToTable("Qualification");
                 });
 
             modelBuilder.Entity("MvcEmployee.Models.QualificationList", b =>
                 {
-                    b.Property<int>("QualificationId")
+                    b.Property<int>("QualificationListId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("QualificationId");
+                    b.HasKey("QualificationListId");
 
                     b.ToTable("QualificationList");
                 });
@@ -73,26 +79,20 @@ namespace MvcEmployee.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("MvcEmployee.Models.QualificationList", b =>
-                {
-                    b.HasOne("MvcEmployee.Models.Qualification", null)
-                        .WithOne("QualificationList")
-                        .HasForeignKey("MvcEmployee.Models.QualificationList", "QualificationId")
+                    b.HasOne("MvcEmployee.Models.QualificationList", "QualificationList")
+                        .WithMany()
+                        .HasForeignKey("QualificationListId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("QualificationList");
                 });
 
             modelBuilder.Entity("MvcEmployee.Models.Employee", b =>
                 {
                     b.Navigation("Qualifications");
-                });
-
-            modelBuilder.Entity("MvcEmployee.Models.Qualification", b =>
-                {
-                    b.Navigation("QualificationList");
                 });
 #pragma warning restore 612, 618
         }

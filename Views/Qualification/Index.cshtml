@@ -21,6 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Employee)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QualificationList)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -35,6 +38,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Employee.EmployeeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QualificationList.QualificationListId)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.QualificationId">Edit</a> |

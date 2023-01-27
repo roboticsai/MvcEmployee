@@ -72,6 +72,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVhbGlmaWNhdGlvbi9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/dell/DotNet/MvcEmployee/Views/QualificationList/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVhbGlmaWNhdGlvbkxpc3QvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/dell/DotNet/MvcEmployee/Views/QualificationList/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVhbGlmaWNhdGlvbkxpc3QvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/dell/DotNet/MvcEmployee/Views/QualificationList/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVhbGlmaWNhdGlvbkxpc3QvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/dell/DotNet/MvcEmployee/Views/QualificationList/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVhbGlmaWNhdGlvbkxpc3QvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/dell/DotNet/MvcEmployee/Views/QualificationList/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVhbGlmaWNhdGlvbkxpc3QvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/dell/DotNet/MvcEmployee/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

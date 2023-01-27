@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MvcEmployee.Data;
 using MvcEmployee.Models;
+using MvcEmployee.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MvcEmployeeContext>(options =>

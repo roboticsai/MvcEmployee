@@ -15,29 +15,42 @@ public static class SeedData
                 DbContextOptions<MvcEmployeeContext>>()))
         {
             // Look for any Employee.
-            if (context.Employee.Any())
+            if (!context.Employee.Any())
             {
-                return;   // DB has been seeded
-            }
-            context.Employee.AddRange(
+                context.Employee.AddRange(
                 new Employee
                 {
-                    Name = "When Harry Met Sally",
+                    Name = "Hari"
                 },
                 new Employee
                 {
-                    Name = "When Harry Met Sally",
+                    Name = "Hari"
                 },
                 new Employee
                 {
-                    Name = "When Harry Met Sally",
-                },
-                new Employee
-                {
-                    Name = "When Harry Met Sally",
+                    Name = "Hari"
                 }
-            );
-            context.SaveChanges();
+                );
+            }
+            if (!context.QualificationList.Any())
+            {
+                context.QualificationList.AddRange(
+                new QualificationList
+                {
+                    Name = "SLC"
+                },
+                new QualificationList
+                {
+                    Name = "BE"
+                },
+                new QualificationList
+                {
+                    Name = "ME"
+                }
+                );
+            }
+
+        context.SaveChanges();
         }
     }
 }
