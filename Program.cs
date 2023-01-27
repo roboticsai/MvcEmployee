@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MvcEmployee.Data;
+using MvcEmployee.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MvcEmployeeContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MvcEmployeeContext") ?? throw new InvalidOperationException("Connection string 'MvcEmployeeContext' not found.")));
@@ -10,15 +12,11 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-if (builder.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    builder.Services.AddDbContext<MvcEmployeeContext>(options =>
-        options.UseSqlite(builder.Configuration.GetConnectionString("MvcEmployeeContext")));
-}
-else
-{
-    builder.Services.AddDbContext<MvcEmployeeContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("ProductionMvcEmployeeContext")));
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
 }
 
 // Configure the HTTP request pipeline.
