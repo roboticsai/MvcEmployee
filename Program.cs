@@ -10,6 +10,17 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddDbContext<MvcEmployeeContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("MvcEmployeeContext")));
+}
+else
+{
+    builder.Services.AddDbContext<MvcEmployeeContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("ProductionMvcEmployeeContext")));
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
