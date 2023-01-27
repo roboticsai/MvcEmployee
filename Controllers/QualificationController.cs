@@ -49,7 +49,7 @@ namespace MvcEmployee.Controllers
         // GET: Qualification/Create
         public IActionResult Create()
         {
-            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "EmployeeId");
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "Name");
             ViewData["QualificationListId"] = new SelectList(_context.QualificationList, "QualificationListId", "QualificationListId");
             return View();
         }
@@ -59,7 +59,7 @@ namespace MvcEmployee.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("QualificationId,Name,Marks,EmployeeId,QualificationListId")] Qualification qualification)
+        public async Task<IActionResult> Create([Bind("QualificationId,Marks,EmployeeId,QualificationListId")] Qualification qualification)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace MvcEmployee.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "EmployeeId", qualification.EmployeeId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "Name", qualification.EmployeeId);
             ViewData["QualificationListId"] = new SelectList(_context.QualificationList, "QualificationListId", "QualificationListId", qualification.QualificationListId);
             return View(qualification);
         }
@@ -85,7 +85,7 @@ namespace MvcEmployee.Controllers
             {
                 return NotFound();
             }
-            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "EmployeeId", qualification.EmployeeId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "Name", qualification.EmployeeId);
             ViewData["QualificationListId"] = new SelectList(_context.QualificationList, "QualificationListId", "QualificationListId", qualification.QualificationListId);
             return View(qualification);
         }
@@ -95,7 +95,7 @@ namespace MvcEmployee.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("QualificationId,Name,Marks,EmployeeId,QualificationListId")] Qualification qualification)
+        public async Task<IActionResult> Edit(int id, [Bind("QualificationId,Marks,EmployeeId,QualificationListId")] Qualification qualification)
         {
             if (id != qualification.QualificationId)
             {
@@ -122,7 +122,7 @@ namespace MvcEmployee.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "EmployeeId", qualification.EmployeeId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "Name", qualification.EmployeeId);
             ViewData["QualificationListId"] = new SelectList(_context.QualificationList, "QualificationListId", "QualificationListId", qualification.QualificationListId);
             return View(qualification);
         }

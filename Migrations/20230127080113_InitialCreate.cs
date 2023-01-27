@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -16,7 +17,10 @@ namespace MvcEmployee.Migrations
                 {
                     EmployeeId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true)
+                    Name = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
+                    DOB = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Gender = table.Column<int>(type: "INTEGER", nullable: false),
+                    Salary = table.Column<decimal>(type: "decimal(18, 2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,8 +46,7 @@ namespace MvcEmployee.Migrations
                 {
                     QualificationId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Marks = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Marks = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     EmployeeId = table.Column<int>(type: "INTEGER", nullable: false),
                     QualificationListId = table.Column<int>(type: "INTEGER", nullable: false)
                 },

@@ -18705,6 +18705,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Shared/_menu.cshtml",
+      "TargetPath": "Views\\Shared\\_menu.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/dell/DotNet/MvcEmployee/Views/QualificationList/Index.cshtml",
       "TargetPath": "Views\\QualificationList\\Index.cshtml",
       "FileKind": "mvc"
