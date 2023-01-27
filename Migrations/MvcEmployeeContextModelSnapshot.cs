@@ -26,9 +26,6 @@ namespace MvcEmployee.Migrations
                     b.Property<DateTime>("DOB")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("GenderId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(60)
@@ -39,8 +36,6 @@ namespace MvcEmployee.Migrations
 
                     b.HasKey("EmployeeId");
 
-                    b.HasIndex("GenderId");
-
                     b.ToTable("Employee");
                 });
 
@@ -50,11 +45,16 @@ namespace MvcEmployee.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("GenderName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("GenderId");
+
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Gender");
                 });
@@ -97,15 +97,11 @@ namespace MvcEmployee.Migrations
                     b.ToTable("QualificationList");
                 });
 
-            modelBuilder.Entity("MvcEmployee.Models.Employee", b =>
+            modelBuilder.Entity("MvcEmployee.Models.Gender", b =>
                 {
-                    b.HasOne("MvcEmployee.Models.Gender", "Gender")
-                        .WithMany()
-                        .HasForeignKey("GenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Gender");
+                    b.HasOne("MvcEmployee.Models.Employee", null)
+                        .WithMany("Gender")
+                        .HasForeignKey("EmployeeId");
                 });
 
             modelBuilder.Entity("MvcEmployee.Models.Qualification", b =>
@@ -129,6 +125,8 @@ namespace MvcEmployee.Migrations
 
             modelBuilder.Entity("MvcEmployee.Models.Employee", b =>
                 {
+                    b.Navigation("Gender");
+
                     b.Navigation("Qualification");
                 });
 #pragma warning restore 612, 618

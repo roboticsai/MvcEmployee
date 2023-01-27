@@ -22,8 +22,9 @@ namespace MvcEmployee.Controllers
         // GET: Employee
         public async Task<IActionResult> Index()
         {
-            var mvcEmployeeContext = _context.Employee.Include(e => e.Gender);
-            return View(await mvcEmployeeContext.ToListAsync());
+              return _context.Employee != null ? 
+                          View(await _context.Employee.ToListAsync()) :
+                          Problem("Entity set 'MvcEmployeeContext.Employee'  is null.");
         }
 
         // GET: Employee/Details/5
@@ -35,7 +36,6 @@ namespace MvcEmployee.Controllers
             }
 
             var employee = await _context.Employee
-                .Include(e => e.Gender)
                 .FirstOrDefaultAsync(m => m.EmployeeId == id);
             if (employee == null)
             {
@@ -48,7 +48,6 @@ namespace MvcEmployee.Controllers
         // GET: Employee/Create
         public IActionResult Create()
         {
-            ViewData["GenderId"] = new SelectList(_context.Set<Gender>(), "GenderId", "GenderId");
             return View();
         }
 
@@ -57,7 +56,7 @@ namespace MvcEmployee.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId,Name,DOB,Salary,GenderId")] Employee employee)
+        public async Task<IActionResult> Create([Bind("EmployeeId,Name,DOB,Salary")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +64,6 @@ namespace MvcEmployee.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenderId"] = new SelectList(_context.Set<Gender>(), "GenderId", "GenderId", employee.GenderId);
             return View(employee);
         }
 
@@ -82,7 +80,6 @@ namespace MvcEmployee.Controllers
             {
                 return NotFound();
             }
-            ViewData["GenderId"] = new SelectList(_context.Set<Gender>(), "GenderId", "GenderId", employee.GenderId);
             return View(employee);
         }
 
@@ -91,7 +88,7 @@ namespace MvcEmployee.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,Name,DOB,Salary,GenderId")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,Name,DOB,Salary")] Employee employee)
         {
             if (id != employee.EmployeeId)
             {
@@ -118,7 +115,6 @@ namespace MvcEmployee.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenderId"] = new SelectList(_context.Set<Gender>(), "GenderId", "GenderId", employee.GenderId);
             return View(employee);
         }
 
@@ -131,7 +127,6 @@ namespace MvcEmployee.Controllers
             }
 
             var employee = await _context.Employee
-                .Include(e => e.Gender)
                 .FirstOrDefaultAsync(m => m.EmployeeId == id);
             if (employee == null)
             {

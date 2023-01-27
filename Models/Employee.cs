@@ -24,6 +24,5 @@ public class Employee
 
     public IEnumerable<Qualification>? Qualification { get; set; }
 
-    public int GenderId {get; set; }
-    public Gender? Gender { get; set; } 
+    public IEnumerable<Gender>? Gender { get; set; }
 }

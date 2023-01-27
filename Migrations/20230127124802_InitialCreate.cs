@@ -12,16 +12,18 @@ namespace MvcEmployee.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Gender",
+                name: "Employee",
                 columns: table => new
                 {
-                    GenderId = table.Column<int>(type: "INTEGER", nullable: false)
+                    EmployeeId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    GenderName = table.Column<string>(type: "TEXT", nullable: false)
+                    Name = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
+                    DOB = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Salary = table.Column<decimal>(type: "decimal(18, 2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Gender", x => x.GenderId);
+                    table.PrimaryKey("PK_Employee", x => x.EmployeeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -38,25 +40,22 @@ namespace MvcEmployee.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Employee",
+                name: "Gender",
                 columns: table => new
                 {
-                    EmployeeId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
-                    DOB = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Salary = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     GenderId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    GenderName = table.Column<string>(type: "TEXT", nullable: false),
+                    EmployeeId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employee", x => x.EmployeeId);
+                    table.PrimaryKey("PK_Gender", x => x.GenderId);
                     table.ForeignKey(
-                        name: "FK_Employee_Gender_GenderId",
-                        column: x => x.GenderId,
-                        principalTable: "Gender",
-                        principalColumn: "GenderId",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_Gender_Employee_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employee",
+                        principalColumn: "EmployeeId");
                 });
 
             migrationBuilder.CreateTable(
@@ -87,9 +86,9 @@ namespace MvcEmployee.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_GenderId",
-                table: "Employee",
-                column: "GenderId");
+                name: "IX_Gender_EmployeeId",
+                table: "Gender",
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Qualification_EmployeeId",
@@ -106,6 +105,9 @@ namespace MvcEmployee.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Gender");
+
+            migrationBuilder.DropTable(
                 name: "Qualification");
 
             migrationBuilder.DropTable(
@@ -113,9 +115,6 @@ namespace MvcEmployee.Migrations
 
             migrationBuilder.DropTable(
                 name: "QualificationList");
-
-            migrationBuilder.DropTable(
-                name: "Gender");
         }
     }
 }
