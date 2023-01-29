@@ -1,4 +1,4 @@
-@model MvcEmployee.ViewModels.EmployeeViewModel
+@model MvcEmployee.Models.Employee
 
 @{
     ViewData["Title"] = "Edit";
@@ -47,7 +47,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
-<div>
-    @{Html.RenderPartial("~/Views/Shared/_Qualification.cshtml", Model.QualificationViewModel;}
-</div>   
