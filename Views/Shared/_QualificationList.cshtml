@@ -1,0 +1,36 @@
+@* <style>
+    #OrderDetails {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+        padding-top:25px; 
+        width:35%; 
+    }
+
+        #OrderDetails tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        #OrderDetails tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+</style>
+
+@model IEnumerable<MvcEmployee.ViewModels.QualificationViewModel>    
+ 
+
+<table id="OrderDetails" class="table" >
+    <tr>
+        <th>Name</th>
+        <th>Marks</th>
+    </tr>   
+
+@foreach (var orderItem in Model)
+{      
+    <tr>
+        <td>@orderItem.Name</td>
+        <td>@orderItem.Marks</td>
+    </tr>
+}
+
+</table> *@
