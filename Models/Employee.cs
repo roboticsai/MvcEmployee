@@ -22,7 +22,6 @@ public class Employee
     [Column(TypeName = "decimal(18, 2)")]
     public decimal Salary { get; set; }
 
-    public IEnumerable<Qualification>? Qualification { get; set; }
-
-    public IEnumerable<Gender>? Gender { get; set; }
+    public int GenderId {get; set; }
+    public Gender? Gender { get; set; } 
 }

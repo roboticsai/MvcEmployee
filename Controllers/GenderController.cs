@@ -56,7 +56,7 @@ namespace MvcEmployee.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GenderId,GenderName")] Gender gender)
+        public async Task<IActionResult> Create([Bind("GenderId,Name")] Gender gender)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace MvcEmployee.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GenderId,GenderName")] Gender gender)
+        public async Task<IActionResult> Edit(int id, [Bind("GenderId,Name")] Gender gender)
         {
             if (id != gender.GenderId)
             {

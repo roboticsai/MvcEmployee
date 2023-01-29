@@ -1,17 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MvcEmployee.Models
+namespace MvcEmployee.Models;
+
+public class Gender
 {
-    public class Gender
-    {
-        [BindProperty]
-        public int GenderId { get; set; }
+    public int GenderId { get; set; }
 
-        [BindProperty]
-        public string GenderName { get; set; }
-    }
+    [StringLength(60, MinimumLength = 3)]
+    [Required]
+    public string? Name { get; set; }
 }
