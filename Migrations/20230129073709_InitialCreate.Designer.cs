@@ -11,7 +11,7 @@ using MvcEmployee.Data;
 namespace MvcEmployee.Migrations
 {
     [DbContext(typeof(MvcEmployeeContext))]
-    [Migration("20230129071425_InitialCreate")]
+    [Migration("20230129073709_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

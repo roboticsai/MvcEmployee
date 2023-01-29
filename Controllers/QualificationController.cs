@@ -50,6 +50,7 @@ namespace MvcEmployee.Controllers
         public IActionResult Create()
         {
             ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "Name");
+            ViewData["QualificationListId"] = new SelectList(_context.QualificationList, "QualificationListId", "Name");
             return View();
         }
 
@@ -67,6 +68,7 @@ namespace MvcEmployee.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "Name", qualification.EmployeeId);
+            ViewData["QualificationListId"] = new SelectList(_context.QualificationList, "QualificationListId", "Name", qualification.QualificationListId);
             return View(qualification);
         }
 
@@ -84,6 +86,7 @@ namespace MvcEmployee.Controllers
                 return NotFound();
             }
             ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "Name", qualification.EmployeeId);
+            ViewData["QualificationListId"] = new SelectList(_context.QualificationList, "QualificationListId", "Name", qualification.QualificationListId);
             return View(qualification);
         }
 
@@ -120,6 +123,7 @@ namespace MvcEmployee.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "Name", qualification.EmployeeId);
+            ViewData["QualificationListId"] = new SelectList(_context.QualificationList, "QualificationListId", "Name", qualification.QualificationListId);
             return View(qualification);
         }
 
