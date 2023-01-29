@@ -18720,6 +18720,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Shared/_EmployeeDetail.cshtml",
+      "TargetPath": "Views\\Shared\\_EmployeeDetail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/dell/DotNet/MvcEmployee/Views/QualificationList/Edit.cshtml",
       "TargetPath": "Views\\QualificationList\\Edit.cshtml",
       "FileKind": "mvc"
@@ -18777,6 +18782,11 @@
     {
       "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Home/Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/dell/DotNet/MvcEmployee/Views/Shared/_Qualification.cshtml",
+      "TargetPath": "Views\\Shared\\_Qualification.cshtml",
       "FileKind": "mvc"
     },
     {
